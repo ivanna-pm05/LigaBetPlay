@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pater\\LigaBetPlay2025\\LigaBetPLay.csproj": {}
+    "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pater\\LigaBetPlay2025\\LigaBetPLay.csproj": {
+    "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pater\\LigaBetPlay2025\\LigaBetPLay.csproj",
+        "projectUniqueName": "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj",
         "projectName": "LigaBetPLay",
-        "projectPath": "C:\\Users\\pater\\LigaBetPlay2025\\LigaBetPLay.csproj",
-        "packagesPath": "C:\\Users\\pater\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pater\\LigaBetPlay2025\\obj\\",
+        "projectPath": "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj",
+        "packagesPath": "/home/camper/.nuget/packages/",
+        "outputPath": "/home/camper/LigaBetPlay2025/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pater\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/camper/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
