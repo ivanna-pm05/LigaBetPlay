@@ -8,7 +8,7 @@ namespace LigaBetPlay.src.Modules.Torneos.Domain.Entities;
 public class Torneo
 {
     public int ID { get; set; }
-    public string? Name { get; set; }
+    public string? Name { get; set; } = string.Empty;
     public string? Type { get; set; }
     public string? Country { get; set; }
     public DateTime FechaInicio { get; set; }

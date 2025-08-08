@@ -46,7 +46,7 @@ public class MenuTorneos
                 case 1:
                     Console.Write("Nombre Torneo: ");
                     string? nombre = Console.ReadLine();
-                    Console.Write("Tipo: ");
+                    Console.Write("Tipo de Torneo: ");
                     string? type = Console.ReadLine();
                     Console.Write("Pais: ");
                     string? country = Console.ReadLine();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LigaBetPlay2025.src.Modules.Teams.Application.Interfaces
+namespace LigaBetPlay.src.Modules.Teams.Application.Interfaces
 {
     public interface ITeamRepository
     {

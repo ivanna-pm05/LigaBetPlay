@@ -7,6 +7,11 @@ namespace LigaBetPLay.src.Modules.Jugadores.Domain.Entities
 {
     public class Jugador
     {
-        
+        public int ID { get; set; }
+        public string? Name { get; set; } = string.Empty;
+        public string? LastName { get; set; } = string.Empty;
+        public string? Dorsal { get; set; }
+        public string? Position { get; set; }
+        public string? Country { get; set; }
     }
 }

@@ -3142,11 +3142,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj",
+      "projectUniqueName": "/home/camper/LigaBetPlay/LigaBetPLay.csproj",
       "projectName": "LigaBetPLay",
-      "projectPath": "/home/camper/LigaBetPlay2025/LigaBetPLay.csproj",
+      "projectPath": "/home/camper/LigaBetPlay/LigaBetPLay.csproj",
       "packagesPath": "/home/camper/.nuget/packages/",
-      "outputPath": "/home/camper/LigaBetPlay2025/obj/",
+      "outputPath": "/home/camper/LigaBetPlay/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/camper/.nuget/NuGet/NuGet.Config"
