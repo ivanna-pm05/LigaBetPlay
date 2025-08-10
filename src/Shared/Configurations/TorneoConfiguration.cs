@@ -14,7 +14,7 @@ public class TorneoConfiguration : IEntityTypeConfiguration<Torneo>
     {
         builder.ToTable("torneo");
 
-        builder.HasKey(t => t.ID);
+        builder.HasKey(t => t.Id);
 
         builder.Property(t => t.Name)
                .IsRequired()

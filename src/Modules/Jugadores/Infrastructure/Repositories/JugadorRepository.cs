@@ -21,7 +21,7 @@ public class JugadorRepository : IJugadorRepository
     public async Task<Jugador?> GetByIdAsync(int id)
     {
         return await _context.Jugadors
-            .FirstOrDefaultAsync(t => t.ID == id);
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<IEnumerable<Jugador?>> GetAllAsync() =>

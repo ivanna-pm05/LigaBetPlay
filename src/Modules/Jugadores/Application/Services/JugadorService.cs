@@ -41,7 +41,7 @@ public class JugadorService : IJugadorService
     {
         var jugador = await _repo.GetByIdAsync(id);
         if (jugador == null)
-            throw new Exception($"❌ JUgador con ID {id} no encontrado.");
+            throw new Exception($"❌ Jugador con ID {id} no encontrado.");
         jugador.Name = nuevoNombre;
         jugador.LastName = nuevoApellido;
         jugador.Dorsal = nuevaDorsal;
@@ -56,17 +56,13 @@ public class JugadorService : IJugadorService
     {
         var jugador = await _repo.GetByIdAsync(id);
         if (jugador == null)
-            throw new Exception($"❌ JUgador con ID {id} no encontrado.");
+            throw new Exception($"❌ Jugador con ID {id} no encontrado.");
         _repo.Remove(jugador);
         await _repo.SaveAsync();
     }
+    
     public async Task<Jugador?> ObtenerJugadorPorIdAsync(int id)
     {
         return await _repo.GetByIdAsync(id);
-    }
-
-    public Task Eliminar(int id)
-    {
-        throw new NotImplementedException();
     }
 }

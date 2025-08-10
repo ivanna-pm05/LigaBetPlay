@@ -25,21 +25,18 @@ public class MenuJugadores
         bool salir = false;
         while (!salir)
         {
-            Console.WriteLine("""
-            +====================================+
-            |    🧔‍♂️     Menu Jugadores     🧔‍♂️    |
-            +====================================+
-            | 1) Registrar Jugador               |
-            | 2) Buscar Jugador                  |
-            | 3) Editar Jugador                  |
-            | 4) Eliminar Jugador                |
-            | 5) Regresar al Menu Principal      |
-            +====================================+
-
-            Seleccione una Opcion
-            ->
-            """);
-            int opt = int.Parse(Console.ReadLine()!);
+            Console.Clear();
+            Console.WriteLine("+====================================+");
+            Console.WriteLine("|    🧔     Menu Jugadores     🧔   |");
+            Console.WriteLine("+====================================+");
+            Console.WriteLine("| 1) Registrar Jugador               |");
+            Console.WriteLine("| 2) Buscar Jugador                  |");
+            Console.WriteLine("| 3) Editar Jugador                  |");
+            Console.WriteLine("| 4) Eliminar Jugador                |");
+            Console.WriteLine("| 5) Regresar al Menu Principal      |");
+            Console.WriteLine("+====================================+");
+            Console.WriteLine();
+            int opt = LeerEntero("Seleccione una Opción\n-> ");
 
             switch (opt)
             {
@@ -48,45 +45,48 @@ public class MenuJugadores
                     string? nombre = Console.ReadLine();
                     Console.Write("Apellido Jugador: ");
                     string? apellido = Console.ReadLine();
-                    Console.Write("Dorsal Jugador: ");
-                    string? dorsal = Console.ReadLine();
+                    int dorsal = LeerEntero("Dorsal Jugador: ");
                     Console.Write("Posicion Jugador: ");
                     string? position = Console.ReadLine();
                     Console.Write("Pais Jugador: ");
                     string? country = Console.ReadLine();
-                    await service.RegistrarJugadorConTareaAsync(nombre!, apellido!, dorsal!, position!, country!);
-                    Console.Write("✅ JUgador Registrado.");
+                    await service.RegistrarJugadorConTareaAsync(nombre!, apellido!, dorsal.ToString(), position!, country!);
+                    Console.Write("✅ Jugador Registrado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 2:
-                    Console.Write("ID: ");
-                    int id = int.Parse(Console.ReadLine()!);
+                    int id = LeerEntero("ID del jugador a buscar: ");
                     Jugador? jugador = await service.ObtenerJugadorPorIdAsync(id);
                     if (jugador != null)
                         Console.WriteLine($"👤 {jugador.Name} - {jugador.LastName} - {jugador.Dorsal} - {jugador.Position} - {jugador.Country}");
                     else
                         Console.WriteLine("❌ Jugador no encontrado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 3:
-                    Console.Write("ID a Editar: ");
-                    int idUp = int.Parse(Console.ReadLine()!);
+                    int idUp = LeerEntero("ID a editar: ");
                     Console.Write("Nuevo Jugador: ");
                     string? nuevoName = Console.ReadLine();
                     Console.Write("Nuevo Apellido: ");
                     string? nuevoLastName = Console.ReadLine();
-                    Console.Write("Nueva Dorsal: ");
-                    string? nuevaDorsal = Console.ReadLine();
+                    int nuevaDorsal = LeerEntero("Nueva Dorsal: ");
                     Console.Write("Nueva Posicion: ");
                     string? nuevaPosition = Console.ReadLine();
                     Console.Write("Nuevo Pais: ");
                     string? nuevoCountry = Console.ReadLine();
-                    await service.EditarJugador(idUp, nuevoName!, nuevoLastName!, nuevaDorsal!, nuevaPosition!, nuevoCountry!);
+                    await service.EditarJugador(idUp, nuevoName!, nuevoLastName!, nuevaDorsal.ToString(), nuevaPosition!, nuevoCountry!);
                     Console.WriteLine("✏️ Editado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 4:
-                    Console.Write("ID del JUgador a eliminar: ");
-                    int idDel = int.Parse(Console.ReadLine()!);
+                    int idDel = LeerEntero("ID del Jugador a eliminar: ");
                     await service.EliminarJugador(idDel);
                     Console.WriteLine("🗑️ Jugador Eliminado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 5:
                     salir = true;
@@ -96,6 +96,18 @@ public class MenuJugadores
                     break;
 
             }
+        }
+    }
+    private int LeerEntero(string mensaje)
+    {
+        int valor;
+        while (true)
+        {
+            Console.WriteLine(mensaje);
+            if (int.TryParse(Console.ReadLine(), out valor))
+                return valor;
+
+            Console.WriteLine("⚠️ Ingrese un número válido.");
         }
     }
 }

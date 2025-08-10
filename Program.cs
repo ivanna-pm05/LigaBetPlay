@@ -2,6 +2,7 @@
 using LigaBetPlay.src.Modules.Torneos.Application.Services;
 using LigaBetPlay.src.Modules.Torneos.UI;
 using LigaBetPlay.src.Shared.Helpers;
+using LigaBetPLay.src.Modules.Jugadores.UI;
 
 var context = DbContextFactory.Create();
 
@@ -9,9 +10,10 @@ var context = DbContextFactory.Create();
 bool salir = false;
 while (!salir)
 {
+    Console.Clear();
      Console.WriteLine("""
             +====================================+
-            | ⚜️   Administrador de Torneos   ⚜️ |
+            | ⚜️   Administrador de Torneos   ⚜️|
             +====================================+
             | 1) Crear Torneo                    |
             | 2) Registro Equipos                |
@@ -31,6 +33,7 @@ while (!salir)
         case 2:
             break;
         case 3:
+            await new MenuJugadores(context).RenderMenu();
             break;
         case 4:
             break;

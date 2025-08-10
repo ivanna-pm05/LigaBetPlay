@@ -21,7 +21,7 @@ public class TorneoRepository : ITorneoRepository
     public async Task<Torneo?> GetByIdAsync(int id)
     {
         return await _context.Torneos
-            .FirstOrDefaultAsync(t => t.ID == id);
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<IEnumerable<Torneo?>> GetAllAsync() =>
