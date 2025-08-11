@@ -11,19 +11,19 @@ bool salir = false;
 while (!salir)
 {
     Console.Clear();
-     Console.WriteLine("""
-            +====================================+
-            | ⚜️   Administrador de Torneos   ⚜️|
-            +====================================+
-            | 1) Crear Torneo                    |
-            | 2) Registro Equipos                |
-            | 3) Registro Jugadores              |
-            | 4) Transferencias                  |
-            | 5) Estadisticas                    |
-            | 6) Salir                           |
-            +====================================+
-            """);
-    int opm = int.Parse(Console.ReadLine()!);
+    Console.WriteLine("+====================================+");
+    Console.WriteLine("| ⚜️   Administrador de Torneos   ⚜️ |");
+    Console.WriteLine("+====================================+");
+    Console.WriteLine("| 1) Crear Torneo                    |");
+    Console.WriteLine("| 2) Registro Equipos                |");
+    Console.WriteLine("| 3) Registro Jugadores              |");
+    Console.WriteLine("| 4) Transferencias                  |");
+    Console.WriteLine("| 5) Estadisticas                    |");
+    Console.WriteLine("| 6) Salir                           |");
+    Console.WriteLine("+====================================+");
+    Console.WriteLine();
+    Console.WriteLine("Seleccione una opción");
+    int opm = LeerEntero("-> ");
 
     switch (opm)
     {
@@ -45,5 +45,17 @@ while (!salir)
         default:
             Console.WriteLine("❗ Opción inválida.");
             break;
+    }
+    int LeerEntero(string mensaje)
+    {
+        int valor;
+        while (true)
+        {
+            Console.Write(mensaje + " "); 
+        if (int.TryParse(Console.ReadLine(), out valor))
+            return valor;
+
+        Console.WriteLine("⚠️ Ingrese un número válido.");
+        }
     }
 }

@@ -27,7 +27,7 @@ public class MenuTorneos
         {
             Console.Clear();
             Console.WriteLine("+====================================+");
-            Console.WriteLine("|     ⚽     Menu Torneos     ⚽    |");
+            Console.WriteLine("|     ⚽     Menu Torneos     ⚽     |");
             Console.WriteLine("+====================================+");
             Console.WriteLine("| 1) Add Torneo                      |");
             Console.WriteLine("| 2) Buscar Torneos                  |");
@@ -36,7 +36,8 @@ public class MenuTorneos
             Console.WriteLine("| 5) Regresar al Menu Principal      |");
             Console.WriteLine("+====================================+");
             Console.WriteLine();
-            int op = LeerEntero("Seleccione una Opción\n-> ");
+            Console.WriteLine("Seleccione una opción");
+            int op = LeerEntero("-> ");
 
             switch (op)
             {
@@ -53,6 +54,8 @@ public class MenuTorneos
                     string? fechafin = Console.ReadLine();
                     await service.RegistrarTorneoConTareaAsync(nombre!, type!, country!, Convert.ToDateTime(fechainicio!), Convert.ToDateTime(fechafin!));
                     Console.Write("✅ Torneo creado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 2:
                     int id = LeerEntero("ID a Buscar: ");
@@ -61,11 +64,15 @@ public class MenuTorneos
                         Console.WriteLine($"👤 {torneo.Name} - {torneo.Type} - {torneo.Country} - {torneo.FechaInicio:dd/MM/yyyy} - {torneo.FechaFin:dd/MM/yyyy}");
                     else
                         Console.WriteLine("❌Torneo No encontrado.");
+                        Console.WriteLine("\nPresione una tecla para continuar...");
+                        Console.ReadKey();
                     break;
                 case 3:
                     int idDel = LeerEntero("ID a eliminar: ");
                     await service.EliminarTorneo(idDel);
                     Console.WriteLine("🗑️ Eliminado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 4:
                     int idUp = LeerEntero("ID a editar: ");
@@ -81,6 +88,8 @@ public class MenuTorneos
                     string? nuevaFechaFin = Console.ReadLine();
                     await service.ActualizarTorneo(idUp, nuevoName!, nuevoType!, nuevoCountry!, Convert.ToDateTime(nuevaFechaInicio!), Convert.ToDateTime(nuevaFechaFin!));
                     Console.WriteLine("✏️ Actualizado.");
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
                     break;
                 case 5:
                     salir = true;
@@ -96,11 +105,11 @@ public class MenuTorneos
         int valor;
         while (true)
         {
-            Console.WriteLine(mensaje);
-            if (int.TryParse(Console.ReadLine(), out valor))
-                return valor;
+            Console.Write(mensaje + " "); 
+        if (int.TryParse(Console.ReadLine(), out valor))
+            return valor;
 
-            Console.WriteLine("⚠️ Ingrese un número válido.");
+        Console.WriteLine("⚠️ Ingrese un número válido.");
         }
     }
 }

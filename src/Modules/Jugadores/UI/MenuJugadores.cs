@@ -27,7 +27,7 @@ public class MenuJugadores
         {
             Console.Clear();
             Console.WriteLine("+====================================+");
-            Console.WriteLine("|    🧔     Menu Jugadores     🧔   |");
+            Console.WriteLine("|    🧔     Menu Jugadores     🧔    |");
             Console.WriteLine("+====================================+");
             Console.WriteLine("| 1) Registrar Jugador               |");
             Console.WriteLine("| 2) Buscar Jugador                  |");
@@ -36,7 +36,8 @@ public class MenuJugadores
             Console.WriteLine("| 5) Regresar al Menu Principal      |");
             Console.WriteLine("+====================================+");
             Console.WriteLine();
-            int opt = LeerEntero("Seleccione una Opción\n-> ");
+            Console.WriteLine("Seleccione una opción");
+            int opt = LeerEntero("-> ");
 
             switch (opt)
             {
@@ -103,11 +104,11 @@ public class MenuJugadores
         int valor;
         while (true)
         {
-            Console.WriteLine(mensaje);
-            if (int.TryParse(Console.ReadLine(), out valor))
-                return valor;
+            Console.Write(mensaje + " "); 
+        if (int.TryParse(Console.ReadLine(), out valor))
+            return valor;
 
-            Console.WriteLine("⚠️ Ingrese un número válido.");
+        Console.WriteLine("⚠️ Ingrese un número válido.");
         }
     }
 }
