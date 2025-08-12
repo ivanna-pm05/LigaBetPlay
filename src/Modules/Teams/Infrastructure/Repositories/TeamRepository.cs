@@ -18,11 +18,12 @@ public class TeamRepository : ITeamRepository
         _context = context;
     }
 
-    public async Task<Team?> GetByIdAsync(int id)
-    {
-        return await _context.Teams
-            .FirstOrDefaultAsync(t => t.Id == id);
-    }
+     public async Task<Team?> GetByIdAsync(int id)
+        {
+            return await _context.Teams
+                .Include(t => t.Torneos)
+                .FirstOrDefaultAsync(t => t.Id == id);
+        }
 
     public async Task<IEnumerable<Team?>> GetAllAsync() =>
         await _context.Teams.ToListAsync();
@@ -38,4 +39,11 @@ public class TeamRepository : ITeamRepository
 
     public async Task SaveAsync() =>
         await _context.SaveChangesAsync();
+
+    public async Task<Team?> GetByIdWithCuerpoTecnicosAsync(int id)
+    {
+        return await _context.Teams
+            .Include(t => t.CuerpoTecnicos)
+            .FirstOrDefaultAsync(t => t.Id == id);
+    }
 }

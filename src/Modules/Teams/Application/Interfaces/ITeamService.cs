@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LigaBetPlay.src.Modules.CuerposTec.Domain.Entities;
 using LigaBetPlay.src.Modules.Teams.Domain.Entities;
+using LigaBetPlay.src.Modules.Torneos.Domain.Entities;
 
 namespace LigaBetPlay.src.Modules.Teams.Application.Interfaces;
 
@@ -13,4 +15,7 @@ public interface ITeamService
     Task EliminarTeam(int id);
     Task<Team?> ObtenerTeamPorIdAsync(int id);
     Task<IEnumerable<Team>> ConsultarTeamAsync();
+
+    Task AsignarCuerpoTecnicoAsync(int teamId, CuerpoTecnico tecnico);
+    Task AsignarTorneoAsync(int teamId, Torneo torneo);
 }

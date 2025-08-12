@@ -17,7 +17,7 @@ public class CuerpoTecnicoService : ICuerpoTecnicoService
         _cuerpotecRository = cuerpotecRepository;
     }
 
-    public Task<IEnumerable<CuerpoTecnico>> ConsultarJugadorAsync()
+    public Task<IEnumerable<CuerpoTecnico>> ConsultarCuerpoTecnicoAsync()
     {
         return _cuerpotecRository.GetAllAsync();
     }

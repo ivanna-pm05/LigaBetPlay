@@ -13,4 +13,5 @@ public interface ITorneoService
     Task EliminarTorneo(int id);
     Task<Torneo?> ObtenerTorneoPorIdAsync(int id);
     Task<IEnumerable<Torneo>> ConsultarTorneoAsync();
+    
 }

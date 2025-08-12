@@ -2,17 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LigaBetPlay.src.Modules.CuerposTec.Application.Interfaces;
+using LigaBetPlay.src.Modules.CuerposTec.Domain.Entities;
 using LigaBetPlay.src.Modules.Teams.Application.Interfaces;
 using LigaBetPlay.src.Modules.Teams.Domain.Entities;
+using LigaBetPlay.src.Modules.Torneos.Application.Interfaces;
+using LigaBetPlay.src.Modules.Torneos.Domain.Entities;
 
 namespace LigaBetPlay.src.Modules.Teams.Application.Services;
 
 public class TeamService : ITeamService
 {
     private readonly ITeamRepository _repo;
-    public TeamService(ITeamRepository repo)
+    private readonly ICuerpoTecnicoRepository _cuerpoTecRepo;
+    private readonly ITorneoRepository _torneoRepo;
+    public TeamService(ITeamRepository repo, ICuerpoTecnicoRepository cuerpoTecRepo, ITorneoRepository torneoRepo)
     {
         _repo = repo;
+        _cuerpoTecRepo = cuerpoTecRepo;
+        _torneoRepo = torneoRepo;
     }
     public Task<IEnumerable<Team>> ConsultarTeamAsync()
     {
@@ -60,5 +68,30 @@ public class TeamService : ITeamService
     Task ITeamService.RegistrarTeamConTareaAsync(string nombre, string tipo)
     {
         return RegistrarTeamConTareaAsync(nombre, tipo);
+    }
+
+    public async Task AsignarCuerpoTecnicoAsync(int teamId, CuerpoTecnico tecnico)
+    {
+        var team = await _repo.GetByIdWithCuerpoTecnicosAsync(teamId);
+        if (team == null)
+            throw new Exception($"Equipo con ID {teamId} no encontrado.");
+
+        if (team.CuerpoTecnicos == null)
+            team.CuerpoTecnicos = new List<CuerpoTecnico>();
+
+        team.CuerpoTecnicos.Add(tecnico);
+        await _repo.SaveAsync();
+    }
+    public async Task AsignarTorneoAsync(int teamId, Torneo torneo)
+    {
+        var team = await _repo.GetByIdAsync(teamId);
+        if (team == null)
+            throw new Exception($"Equipo con ID {teamId} no encontrado.");
+
+        if (team.Torneos == null)
+            team.Torneos = new List<Torneo>();
+
+        team.Torneos.Add(torneo);
+        await _repo.SaveAsync();
     }
 }

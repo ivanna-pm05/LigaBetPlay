@@ -14,5 +14,6 @@ public interface ITeamRepository
     void Remove(Team team);
     void Update(Team team);
     Task SaveAsync();
+    Task<Team?> GetByIdWithCuerpoTecnicosAsync(int id);
     
 }
