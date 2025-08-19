@@ -13,6 +13,6 @@ public class CuerpoTecnico
     public string? LastName { get; set; } = string.Empty;
     public string? Role { get; set; }
     public string? Country { get; set; }
-
-    public ICollection<Team>? Teams { get; set; }
+    public int EquipoId { get; set; }
+    public Team? Teams { get; set; }
 }

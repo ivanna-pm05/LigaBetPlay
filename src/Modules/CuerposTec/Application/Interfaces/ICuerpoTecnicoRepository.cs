@@ -8,11 +8,7 @@ namespace LigaBetPlay.src.Modules.CuerposTec.Application.Interfaces;
 
 public interface ICuerpoTecnicoRepository
 {
-    Task<CuerpoTecnico?> GetByIdAsync(int id);
     Task<IEnumerable<CuerpoTecnico?>> GetAllAsync();
-    void Add(CuerpoTecnico cuerpotecnico);
-    void Remove(CuerpoTecnico cuerpotecnico);
-    void Update(CuerpoTecnico cuerpotecnico);
+    Task AddAsync(CuerpoTecnico cuerpotecnico);
     Task SaveAsync();
-    Task<IEnumerable<CuerpoTecnico?>> GetAllWithTeamAsync();
 }

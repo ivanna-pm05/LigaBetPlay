@@ -20,6 +20,10 @@ namespace LigaBetPlay.src.Shared.Configurations
                    .IsRequired()
                    .HasMaxLength(100);
 
+              builder.HasMany(e => e.CuerpoTecnicos)
+                     .WithOne(ct => ct.Teams)
+                     .HasForeignKey(ct => ct.EquipoId)
+                     .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasMany(t => t.Torneos)

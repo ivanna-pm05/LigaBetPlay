@@ -17,11 +17,11 @@ public class CuerpoTecnicoService : ICuerpoTecnicoService
         _cuerpotecRository = cuerpotecRepository;
     }
 
-    public Task<IEnumerable<CuerpoTecnico>> ConsultarCuerpoTecnicoAsync()
+    public Task<IEnumerable<CuerpoTecnico>> ConsultarCuerpoTecnicosAsync()
     {
-        return _cuerpotecRository.GetAllAsync();
+        return _cuerpotecRository.GetAllAsync()!;
     }
-    public async Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido, string dorsal, string role, string country)
+    public async Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido,  string role, string country, int equipoId)
     {
         var existentes = await _cuerpotecRository.GetAllAsync();
         if (existentes.Any(c => c.Name == nombre))
@@ -32,50 +32,9 @@ public class CuerpoTecnicoService : ICuerpoTecnicoService
             LastName = apellido,
             Role = role,
             Country = country,
+            EquipoId = equipoId
         };
-        _cuerpotecRository.Add(Cuerpotec);
-        _cuerpotecRository.Update(Cuerpotec);
-    }
-
-    public async Task EditarCuerpoTecnico(int id, string nuevoNombre, string nuevoApellido, string nuevaRole, string nuevoCountry)
-    {
-        var cuerpotec = await _cuerpotecRository.GetByIdAsync(id);
-        if (cuerpotec == null)
-            throw new Exception($"❌ Cuerpo Tecnico con ID {id} no encontrado.");
-        cuerpotec.Name = nuevoNombre;
-        cuerpotec.LastName = nuevoApellido;
-        cuerpotec.Role = nuevaRole;
-        cuerpotec.Country = nuevoCountry;
-
-        _cuerpotecRository.Update(cuerpotec);
+        await _cuerpotecRository.AddAsync(Cuerpotec);
         await _cuerpotecRository.SaveAsync();
-    }
-
-    public async Task ElimnarCuerpoTecncio(int id)
-    {
-        var cuerpotec = await _cuerpotecRository.GetByIdAsync(id);
-        if (cuerpotec == null)
-            throw new Exception($"❌ Cuerpo Tecnico con ID {id} no encontrado.");
-        _cuerpotecRository.Remove(cuerpotec);
-        await _cuerpotecRository.SaveAsync();
-    }
-
-    public async Task<CuerpoTecnico?> ObtenerCuerpoTecnicoPorIdAsync(int id)
-    {
-        return await _cuerpotecRository.GetByIdAsync(id);
-    }
-
-    public Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido, string role, string country)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<CuerpoTecnico?>> ConsultarCuerpoTecnicosAsync()
-    {
-        throw new NotImplementedException();
-    }
-    public async Task<IEnumerable<CuerpoTecnico?>> VerCuerpoTecConTeam()
-    {
-        return await _cuerpotecRository.GetAllWithTeamAsync();
     }
 }

@@ -18,33 +18,16 @@ public class CuerpoTecnicoRepository : ICuerpoTecnicoRepository
         _context = context;
     }
 
-    public void Add(CuerpoTecnico cuerpotecnico)
+    public async Task AddAsync(CuerpoTecnico cuerpotecnico)
     {
-        _context.CuerpoTec.Add(cuerpotecnico);
+       await _context.CuerpoTec.AddAsync(cuerpotecnico);
     }
 
     public async Task<IEnumerable<CuerpoTecnico?>> GetAllAsync() =>
         await _context.CuerpoTec.ToListAsync();
 
-
-    public async Task<CuerpoTecnico?> GetByIdAsync(int id)
+    public async Task SaveAsync()
     {
-        return await _context.CuerpoTec.FirstOrDefaultAsync(c => c.Id == id);
-
+        await _context.SaveChangesAsync();
     }
-
-    public void Remove(CuerpoTecnico cuerpotecnico)
-    {
-        _context.CuerpoTec.Remove(cuerpotecnico);
-    }
-
-    public async Task SaveAsync() => await _context.SaveChangesAsync();
-
-    public void Update(CuerpoTecnico cuerpotecnico) =>
-        _context.SaveChanges();
-    
-    public async Task<IEnumerable<CuerpoTecnico?>> GetAllWithTeamAsync() =>
-        await _context.CuerpoTec.AsNoTracking()
-            .Include(c => c.Teams)
-            .ToListAsync();
 }
