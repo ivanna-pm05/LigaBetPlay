@@ -42,6 +42,10 @@ public class MenuJugadores
             switch (opt)
             {
                 case 1:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|  Registrar Jugagor  |");
+                    Console.WriteLine("+=====================+");
                     Console.Write("Nombre Jugador: ");
                     string? nombre = Console.ReadLine();
                     Console.Write("Apellido Jugador: ");
@@ -57,6 +61,10 @@ public class MenuJugadores
                     Console.ReadKey();
                     break;
                 case 2:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|    Buscar Jugagor   |");
+                    Console.WriteLine("+=====================+");
                     int id = LeerEntero("ID del jugador a buscar: ");
                     Jugador? jugador = await service.ObtenerJugadorPorIdAsync(id);
                     if (jugador != null)
@@ -67,6 +75,10 @@ public class MenuJugadores
                     Console.ReadKey();
                     break;
                 case 3:
+                    Console.Clear();
+                    Console.WriteLine("+==================+");
+                    Console.WriteLine("|  Editar Jugagor  |");
+                    Console.WriteLine("+==================+");
                     int idUp = LeerEntero("ID a editar: ");
                     Console.Write("Nuevo Jugador: ");
                     string? nuevoName = Console.ReadLine();
@@ -83,6 +95,10 @@ public class MenuJugadores
                     Console.ReadKey();
                     break;
                 case 4:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|  Eliminar Jugagor  |");
+                    Console.WriteLine("+=====================+");
                     int idDel = LeerEntero("ID del Jugador a eliminar: ");
                     await service.EliminarJugador(idDel);
                     Console.WriteLine("🗑️ Jugador Eliminado.");
@@ -90,6 +106,8 @@ public class MenuJugadores
                     Console.ReadKey();
                     break;
                 case 5:
+                    Console.Clear();
+                    Console.WriteLine("👋Adios...");
                     salir = true;
                     break;
                 default:

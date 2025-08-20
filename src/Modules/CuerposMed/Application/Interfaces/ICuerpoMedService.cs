@@ -9,6 +9,6 @@ namespace LigaBetPlay.src.Modules.CuerposMed.Application.Interfaces
     public interface ICuerpoMedService
     {
         Task<IEnumerable<CuerpoMedico>> ConsultarCuerpoMedicoAsync();
-        Task RegistrarCuerpoMedicoAsync(string nombre, string apellido, int edad, string especialidad, int equipoId);
+        Task RegistrarCuerpoMedicoAsync(string nombre, string apellido, int edad, string especialidad, int teamId);
     }
 }

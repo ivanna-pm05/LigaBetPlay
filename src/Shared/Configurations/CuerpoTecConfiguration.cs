@@ -29,8 +29,8 @@ namespace LigaBetPlay.src.Shared.Configurations
                     .HasMaxLength(100);
             
             builder.HasOne(ct => ct.Teams)
-                .WithMany(e => e.CuerpoTecnicos) 
-                .HasForeignKey(cm => cm.EquipoId)
+                .WithMany(e => e.CuerposTecnicos) 
+                .HasForeignKey(cm => cm.TeamId)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

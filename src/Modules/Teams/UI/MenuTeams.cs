@@ -63,75 +63,149 @@ public class MenuTeams
             {
                 case 1:
                     Console.Clear();
-                        Console.WriteLine("== Registrar Equipo ==");
-                        Console.WriteLine("Ingrese el nombre del equipo: ");
-                        string? nombre = Console.ReadLine();
-                        Console.WriteLine("Ingrese el tipo de equipo (Selección/Local):");
-                        string? tipo = Console.ReadLine();
-                        Console.Write("Ingrese el país de origen del equipo: ");
-                        string? country = Console.ReadLine();
-                        await service.RegistrarTeamConTareaAsync(nombre!, tipo!, country!);
-                        Console.WriteLine("Equipo registrado con éxito ✅.");
-                        Console.ReadKey();
-                        break;
+                    Console.WriteLine("+====================+");
+                    Console.WriteLine("|  Registrar Equipo  |");
+                    Console.WriteLine("+====================+");
+                    Console.WriteLine("Ingrese el nombre del equipo: ");
+                    string? nombre = Console.ReadLine();
+                    Console.WriteLine("Ingrese el tipo de equipo (Selección/Local):");
+                    string? tipo = Console.ReadLine();
+                    Console.Write("Ingrese el país de origen del equipo: ");
+                    string? country = Console.ReadLine();
+                    await service.RegistrarTeamConTareaAsync(nombre!, tipo!, country!);
+                    Console.WriteLine("Equipo registrado con éxito ✅.");
+                    Console.ReadKey();
+                    break;
                 case 2:
                     Console.Clear();
-                        Console.WriteLine("== Registrar Cuerpo Técnico ==");
-                        var teamCT = await service.ConsultarTeamAsync();
-                        Console.WriteLine("Equipos disponibles:");
-                        foreach (var e in teamCT)
-                            Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
-                        Console.WriteLine("Ingrese el Id del equipo: ");
-                        if (!int.TryParse(Console.ReadLine(), out int equipoId))
-                        {
-                            Console.WriteLine("Id inválido.");
-                            Console.ReadKey();
-                            break;
-                        }
-                        Console.WriteLine("Ingrese el nombre: ");
-                        string? nombreCT = Console.ReadLine();
-                        Console.WriteLine("Ingrese el apellido: ");
-                        string? apellidoCT = Console.ReadLine();
-                        Console.WriteLine("Ingrese el rol: ");
-                        string? role = Console.ReadLine();
-                        Console.Write("Ingrese el país de origen del equipo: ");
-                        string? countryCT = Console.ReadLine();
-                        await cuerpoTecnicoService.RegistrarCuerpoTecnicoConTareaAsync(nombreCT!, apellidoCT!, role!,countryCT!, equipoId);
-                        Console.WriteLine("Cuerpo técnico registrado con éxito ✅.");
+                    Console.WriteLine("+============================+");
+                    Console.WriteLine("|  Registrar Cuerpo Técnico  |");
+                    Console.WriteLine("+============================+");
+                    var teamCT = await service.ConsultarTeamAsync();
+                    Console.WriteLine("Equipos disponibles:");
+                    foreach (var e in teamCT)
+                        Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
+                    Console.WriteLine("Ingrese el Id del equipo: ");
+                    if (!int.TryParse(Console.ReadLine(), out int equipoIdCT))
+                    {
+                        Console.WriteLine("❌ Id inválido.");
                         Console.ReadKey();
                         break;
+                    }
+                    Console.WriteLine("Ingrese el nombre: ");
+                    string? nombreCT = Console.ReadLine();
+                    Console.WriteLine("Ingrese el apellido: ");
+                    string? apellidoCT = Console.ReadLine();
+                    Console.WriteLine("Ingrese el rol: ");
+                    string? role = Console.ReadLine();
+                    Console.Write("Ingrese el país de origen del equipo: ");
+                    string? countryCT = Console.ReadLine();
+                    await cuerpoTecnicoService.RegistrarCuerpoTecnicoConTareaAsync(nombreCT!, apellidoCT!, role!,countryCT!, equipoIdCT);
+                    Console.WriteLine("Cuerpo técnico registrado con éxito ✅.");
+                    Console.ReadKey();
+                    break;
                 case 3:
                     Console.Clear();
-                        Console.WriteLine("== Registrar Cuerpo Médico ==");
-                        var equiposCM = await service.ConsultarTeamAsync();
-                        Console.WriteLine("Equipos disponibles:");
-                        foreach (var e in equiposCM)
-                            Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
-                        Console.WriteLine("Ingrese el Id del equipo: ");
-                        if (!int.TryParse(Console.ReadLine(), out int equipoIdCM))
-                        {
-                            Console.WriteLine("Id inválido.");
-                            Console.ReadKey();
-                            break;
-                        }
-                        Console.WriteLine("Ingrese el nombre: ");
-                        string? nombreCM = Console.ReadLine();
-                        Console.WriteLine("Ingrese el apellido: ");
-                        string? apellidoCM = Console.ReadLine();
-                        int edadCM = LeerEntero("Ingrese la edad:");
-                        Console.WriteLine("Ingrese el cargo: ");
-                        string? especialidad = Console.ReadLine();
-                        await CuerpoMedService.RegistrarCuerpoMedicoAsync(nombreCM!, apellidoCM!, edadCM, especialidad!, equipoIdCM);
-                        Console.WriteLine("✅ Cuerpo médico registrado con éxito.");
+                    Console.WriteLine("+============================+");
+                    Console.WriteLine("|  Registrar Cuerpo Médico   |");
+                    Console.WriteLine("+============================+");
+                    var equiposCM = await service.ConsultarTeamAsync();
+                    Console.WriteLine("Equipos disponibles:");
+                    foreach (var e in equiposCM)
+                        Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
+                    Console.WriteLine("Ingrese el Id del equipo: ");
+                    if (!int.TryParse(Console.ReadLine(), out int TeamIdCM))
+                    {
+                        Console.WriteLine("❌ Id inválido.");
                         Console.ReadKey();
                         break;
+                    }
+                    Console.WriteLine("Ingrese el nombre: ");
+                    string? nombreCM = Console.ReadLine();
+                    Console.WriteLine("Ingrese el apellido: ");
+                    string? apellidoCM = Console.ReadLine();
+                    int edadCM = LeerEntero("Ingrese la edad:");
+                    Console.WriteLine("Ingrese el cargo: ");
+                    string? especialidad = Console.ReadLine();
+                    await cuerpoMedService.RegistrarCuerpoMedicoAsync(nombreCM!, apellidoCM!, edadCM, especialidad!, TeamIdCM);
+                    Console.WriteLine("✅ Cuerpo médico registrado con éxito.");
+                    Console.ReadKey();
+                    break;
                 case 4:
+                    Console.Clear();
+                    Console.WriteLine("+============================+");
+                    Console.WriteLine("| Inscribir Equipo a Torneo  |");
+                    Console.WriteLine("+============================+");
+                    var teams = await service.ConsultarTeamAsync();
+                    Console.WriteLine("Equipos disponibles:");
+                    foreach (var e in teams)
+                    {
+                        Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
+                    }
+                    Console.WriteLine("Ingrese el Id del equipo a inscribir: ");
+                    if (!int.TryParse(Console.ReadLine(), out int equipoId))
+                    {
+                        Console.WriteLine("❌Id inválido.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    var torneos = await torneoService.ConsultarTorneoAsync();
+                    Console.WriteLine("Torneos disponibles:");
+                    foreach (var t in torneos)
+                    {
+                        Console.WriteLine($"Id: {t.Id} - Nombre: {t.Name}");
+                    }
+                    Console.Write("Ingrese el Id del torneo al cual inscribir al equipo: ");
+                    if (!int.TryParse(Console.ReadLine(), out int torneoId))
+                    {
+                        Console.WriteLine("❌ Id inválido.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    await service.InscribirATorneoAsync(equipoId, torneoId);
+                    Console.WriteLine("Equipo inscrito al torneo con éxito✅.");
+                    Console.ReadKey();
                     break;
                 case 5:
                     break;
                 case 6:
+                    Console.Clear();
+                    Console.WriteLine("+=================+");
+                    Console.WriteLine("| Salir de Torneo |");
+                    Console.WriteLine("+=================+");
+                    teams = await service.ConsultarTeamAsync();
+                    Console.WriteLine("Equipos disponibles:");
+                    foreach (var e in teams)
+                    {
+                        Console.WriteLine($"Id: {e.Id} - Nombre: {e.Name}");
+                    }
+                    Console.Write("Ingrese el Id del equipo que desea retirar del torneo: ");
+                    if (!int.TryParse(Console.ReadLine(), out equipoId))
+                    {
+                        Console.WriteLine("❌ Id inválido.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    torneos = await torneoService.ConsultarTorneoAsync();
+                    Console.WriteLine("Torneos disponibles:");
+                    foreach (var t in torneos)
+                    {
+                        Console.WriteLine($"Id: {t.Id} - Nombre: {t.Name}");
+                    }
+                    Console.Write("Ingrese el Id del torneo del cual desea retirar al equipo: ");
+                    if (!int.TryParse(Console.ReadLine(), out torneoId))
+                    {
+                        Console.WriteLine("❌ Id inválido.");
+                        Console.ReadKey();
+                        break;
+                    }
+                    await service.SalirDeTorneoAsync(equipoId, torneoId);
+                    Console.WriteLine("Equipo retirado del torneo con éxito✅.");
+                    Console.ReadKey();
                     break;
                 case 7:
+                    Console.Clear();
+                    Console.WriteLine("👋Adios...");
                     salir = true;
                     break;
                 default:

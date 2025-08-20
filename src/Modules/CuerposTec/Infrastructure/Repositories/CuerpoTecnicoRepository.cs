@@ -20,11 +20,11 @@ public class CuerpoTecnicoRepository : ICuerpoTecnicoRepository
 
     public async Task AddAsync(CuerpoTecnico cuerpotecnico)
     {
-       await _context.CuerpoTec.AddAsync(cuerpotecnico);
+       await _context.CuerposTec.AddAsync(cuerpotecnico);
     }
 
     public async Task<IEnumerable<CuerpoTecnico?>> GetAllAsync() =>
-        await _context.CuerpoTec.ToListAsync();
+        await _context.CuerposTec.ToListAsync();
 
     public async Task SaveAsync()
     {

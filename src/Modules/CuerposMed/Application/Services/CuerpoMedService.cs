@@ -19,7 +19,7 @@ namespace LigaBetPlay.src.Modules.CuerposMed.Application.Services
         {
             return _repo.GetAllAsync()!;
         }
-        public async Task RegistrarCuerpoMedicoAsync(string nombre, string apellido, int edad, string especialidad, int equipoId)
+        public async Task RegistrarCuerpoMedicoAsync(string nombre, string apellido, int edad, string especialidad, int teamId)
         {
             var CuerpoMed = new CuerpoMedico
             {
@@ -27,7 +27,7 @@ namespace LigaBetPlay.src.Modules.CuerposMed.Application.Services
                 LastName = apellido,
                 Edad = edad,
                 Especialidad = especialidad,
-                EquipoId = equipoId
+                TeamId = teamId
             };
 
             await _repo.AddAsync(CuerpoMed);

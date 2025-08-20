@@ -12,7 +12,7 @@ namespace LigaBetPlay.src.Shared.Configurations
     {
         public void Configure(EntityTypeBuilder<CuerpoMedico> builder)
         {
-            builder.ToTable("CuerposMedicos");
+            builder.ToTable("cuerposmedicos");
 
             builder.HasKey(cm => cm.Id);
 
@@ -31,8 +31,8 @@ namespace LigaBetPlay.src.Shared.Configurations
                 .HasMaxLength(100);
 
             builder.HasOne(cm => cm.Team)
-                .WithMany(e => e.cuerpoMedicos) 
-                .HasForeignKey(cm => cm.EquipoId)
+                .WithMany(e => e.CuerposMedicos) 
+                .HasForeignKey(cm => cm.TeamId)
                 .OnDelete(DeleteBehavior.NoAction); 
         }
     }

@@ -21,7 +21,7 @@ public class CuerpoTecnicoService : ICuerpoTecnicoService
     {
         return _cuerpotecRository.GetAllAsync()!;
     }
-    public async Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido,  string role, string country, int equipoId)
+    public async Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido,  string role, string country, int teamId)
     {
         var existentes = await _cuerpotecRository.GetAllAsync();
         if (existentes.Any(c => c.Name == nombre))
@@ -32,7 +32,7 @@ public class CuerpoTecnicoService : ICuerpoTecnicoService
             LastName = apellido,
             Role = role,
             Country = country,
-            EquipoId = equipoId
+            TeamId = teamId
         };
         await _cuerpotecRository.AddAsync(Cuerpotec);
         await _cuerpotecRository.SaveAsync();

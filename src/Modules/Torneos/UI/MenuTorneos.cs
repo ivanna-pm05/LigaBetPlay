@@ -42,6 +42,10 @@ public class MenuTorneos
             switch (op)
             {
                 case 1:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|     Add Torneos     |");
+                    Console.WriteLine("+=====================+");
                     Console.Write("Nombre Torneo: ");
                     string? nombre = Console.ReadLine();
                     Console.Write("Tipo de Torneo: ");
@@ -58,6 +62,10 @@ public class MenuTorneos
                     Console.ReadKey();
                     break;
                 case 2:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|    Buscar Torneos   |");
+                    Console.WriteLine("+=====================+");
                     int id = LeerEntero("ID a Buscar: ");
                     Torneo? torneo = await service.ObtenerTorneoPorIdAsync(id);
                     if (torneo != null)
@@ -68,6 +76,10 @@ public class MenuTorneos
                         Console.ReadKey();
                     break;
                 case 3:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|   Eliminar Torneos  |");
+                    Console.WriteLine("+=====================+");
                     int idDel = LeerEntero("ID a eliminar: ");
                     await service.EliminarTorneo(idDel);
                     Console.WriteLine("🗑️ Eliminado.");
@@ -75,6 +87,10 @@ public class MenuTorneos
                     Console.ReadKey();
                     break;
                 case 4:
+                    Console.Clear();
+                    Console.WriteLine("+=====================+");
+                    Console.WriteLine("|    Editar Torneos   |");
+                    Console.WriteLine("+=====================+");
                     int idUp = LeerEntero("ID a editar: ");
                     Console.Write("Nuevo Torneo: ");
                     string? nuevoName = Console.ReadLine();
@@ -92,6 +108,8 @@ public class MenuTorneos
                     Console.ReadKey();
                     break;
                 case 5:
+                    Console.Clear();
+                    Console.WriteLine("👋Adios...");
                     salir = true;
                     break;
                 default:

@@ -16,7 +16,7 @@ public class JugadorService : IJugadorService
     }
     public Task<IEnumerable<Jugador>> ConsultarJugadorAsync()
     {
-        return _repo.GetAllAsync();
+        return _repo.GetAllAsync()!;
     }
 
     public async Task RegistrarJugadorConTareaAsync(string nombre, string apellido, string dorsal, string position, string country)

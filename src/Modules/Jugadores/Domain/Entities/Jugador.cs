@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LigaBetPlay.src.Modules.Teams.Domain.Entities;
 
 namespace LigaBetPLay.src.Modules.Jugadores.Domain.Entities
 {
@@ -13,5 +14,7 @@ namespace LigaBetPLay.src.Modules.Jugadores.Domain.Entities
         public string? Dorsal { get; set; }
         public string? Position { get; set; }
         public string? Country { get; set; }
+        public int? TeamId { get; set; }
+        public Team? Team { get; set; }
     }
 }

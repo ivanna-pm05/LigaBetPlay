@@ -10,10 +10,10 @@ public class CuerpoMedico
 {
     
     public int Id { get; set; }
-    public string? Name { get; set; } 
-    public string? LastName { get; set; }
+    public string? Name { get; set; } = string.Empty;
+    public string? LastName { get; set; } = string.Empty;
     public int Edad { get; set; }
-    public string? Especialidad { get; set; }
-    public int EquipoId { get; set; }
+    public string? Especialidad { get; set; } = string.Empty;
+    public int TeamId { get; set; }
     public Team? Team { get; set; }
 }

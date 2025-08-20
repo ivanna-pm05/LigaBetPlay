@@ -15,8 +15,8 @@ public class Team
     public string? Name { get; set; } = string.Empty;
     public string? Type { get; set; } = string.Empty;
     public string? Country { get; set; } = string.Empty;
-    public ICollection<Jugador>? jugadors { get; set; } = new HashSet<Jugador>();
-    public ICollection<CuerpoMedico>? cuerpoMedicos { get; set; } = new HashSet<CuerpoMedico>();
-    public ICollection<CuerpoTecnico>? CuerpoTecnicos { get; set; } = new HashSet<CuerpoTecnico>();
+    public ICollection<Jugador>? Jugadors { get; set; } = new HashSet<Jugador>();
+    public ICollection<CuerpoMedico>? CuerposMedicos { get; set; } = new HashSet<CuerpoMedico>();
+    public ICollection<CuerpoTecnico>? CuerposTecnicos { get; set; } = new HashSet<CuerpoTecnico>();
     public ICollection<Torneo> Torneos { get; set; } = new HashSet<Torneo>();
 }
