@@ -18,32 +18,24 @@ public class TeamRepository : ITeamRepository
         _context = context;
     }
 
-     public async Task<Team?> GetByIdAsync(int id)
-        {
-            return await _context.Teams
-                .Include(t => t.Torneos)
-                .FirstOrDefaultAsync(t => t.Id == id);
-        }
-
-    public async Task<IEnumerable<Team?>> GetAllAsync() =>
-        await _context.Teams.ToListAsync();
-
-    public void Add(Team team) =>
-        _context.Teams.Add(team);
-
-    public void Remove(Team team) =>
-        _context.Teams.Remove(team);
-
-    public void Update(Team team) =>
-        _context.SaveChanges();
-
-    public async Task SaveAsync() =>
-        await _context.SaveChangesAsync();
-
-    public async Task<Team?> GetByIdWithCuerpoTecnicosAsync(int id)
+    public async Task<Team?> GetByIdAsync(int id)
     {
         return await _context.Teams
-            .Include(t => t.CuerpoTecnicos)
+            .Include(t => t.Torneos)
             .FirstOrDefaultAsync(t => t.Id == id);
+    }
+
+    public async Task<IEnumerable<Team>> GetAllAsync()
+    {
+        return await _context.Teams.ToListAsync();
+    }
+
+    public void Add(Team team)
+    {
+        _context.Teams.Add(team);
+    }
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }

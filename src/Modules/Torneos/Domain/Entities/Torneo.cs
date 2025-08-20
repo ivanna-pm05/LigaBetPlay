@@ -14,5 +14,5 @@ public class Torneo
     public string? Country { get; set; }
     public DateTime FechaInicio { get; set; }
     public DateTime FechaFin { get; set; }
-    public ICollection<Team> Teams { get; set; } = new List<Team>();
+    public ICollection<Team>? Teams { get; set; } = new HashSet<Team>();
 }

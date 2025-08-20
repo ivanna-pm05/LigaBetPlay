@@ -27,6 +27,11 @@ namespace LigaBetPlay.src.Shared.Configurations
             builder.Property(c => c.Role)
                     .IsRequired()
                     .HasMaxLength(100);
+            
+            builder.HasOne(ct => ct.Teams)
+                .WithMany(e => e.CuerpoTecnicos) 
+                .HasForeignKey(cm => cm.EquipoId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

@@ -15,8 +15,8 @@ public class AppDbContext : DbContext
     public DbSet<Torneo> Torneos => Set<Torneo>();
     public DbSet<Jugador> Jugadors => Set<Jugador>();
     public DbSet<Team> Teams => Set<Team>();
-    public DbSet<CuerpoTecnico> CuerpoTec => Set<CuerpoTecnico>();
-    public DbSet<CuerpoMedico> Cuerposmedicos => Set<CuerpoMedico>();
+    public DbSet<CuerpoTecnico> CuerposTec => Set<CuerpoTecnico>();
+    public DbSet<CuerpoMedico> CuerposMedicos => Set<CuerpoMedico>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

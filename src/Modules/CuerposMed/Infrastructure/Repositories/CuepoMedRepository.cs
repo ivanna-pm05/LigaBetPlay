@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LigaBetPlay.src.Modules.CuerposMed.Application.Interfaces;
 using LigaBetPlay.src.Modules.CuerposMed.Domain.Entities;
 using LigaBetPlay.src.Shared.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace LigaBetPlay.src.Modules.CuerposMed.Infrastructure.Repositories
 {
@@ -17,7 +18,7 @@ namespace LigaBetPlay.src.Modules.CuerposMed.Infrastructure.Repositories
             _context = context;
         }
         public async Task<IEnumerable<CuerpoMedico?>> GetAllAsync() =>
-            await _context.CuerposMedicos.ToList();
+            await _context.CuerposMedicos.ToListAsync();
         public async Task AddAsync(CuerpoMedico cuerpomedico)
         {
             await _context.CuerposMedicos.AddAsync(cuerpomedico);

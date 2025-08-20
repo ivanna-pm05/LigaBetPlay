@@ -9,11 +9,7 @@ namespace LigaBetPlay.src.Modules.Teams.Application.Interfaces;
 public interface ITeamRepository
 {
     Task<Team?> GetByIdAsync(int id);
-    Task<IEnumerable<Team?>> GetAllAsync();
+    Task<IEnumerable<Team>> GetAllAsync();
     void Add(Team team);
-    void Remove(Team team);
-    void Update(Team team);
     Task SaveAsync();
-    Task<Team?> GetByIdWithCuerpoTecnicosAsync(int id);
-    
 }

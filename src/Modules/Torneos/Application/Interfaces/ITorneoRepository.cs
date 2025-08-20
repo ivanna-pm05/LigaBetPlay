@@ -9,7 +9,7 @@ namespace LigaBetPlay.src.Modules.Torneos.Application.Interfaces;
 public interface ITorneoRepository
 {
     Task<Torneo?> GetByIdAsync(int id);
-    Task<IEnumerable<Torneo>> GetAllAsync();
+    Task<IEnumerable<Torneo?>> GetAllAsync();
     void Add(Torneo torneo);
     void Remove(Torneo torneo);
     void Update(Torneo torneo);
