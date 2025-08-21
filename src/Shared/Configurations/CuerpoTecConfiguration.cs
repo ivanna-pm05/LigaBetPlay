@@ -12,7 +12,7 @@ namespace LigaBetPlay.src.Shared.Configurations
     {
         public void Configure(EntityTypeBuilder<CuerpoTecnico> builder)
         {
-            builder.ToTable("cuerpotecnico");
+            builder.ToTable("cuerpo_tecnico");
 
             builder.HasKey(c => c.Id);
 

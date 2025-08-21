@@ -13,7 +13,7 @@ namespace LigaBetPlay.src.Shared.Configurations
     {
         public void Configure(EntityTypeBuilder<Team> builder)
         {
-            builder.ToTable("team");
+            builder.ToTable("teams");
 
             builder.HasKey(t => t.Id);
 

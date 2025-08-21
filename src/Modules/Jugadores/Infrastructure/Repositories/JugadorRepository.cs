@@ -35,7 +35,6 @@ public class JugadorRepository : IJugadorRepository
 
     public void Update(Jugador jugador) =>
         _context.SaveChanges();
-
     public async Task SaveAsync() =>
         await _context.SaveChangesAsync();
 }

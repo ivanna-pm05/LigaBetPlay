@@ -19,7 +19,7 @@ public class JugadorService : IJugadorService
         return _repo.GetAllAsync()!;
     }
 
-    public async Task RegistrarJugadorConTareaAsync(string nombre, string apellido, string dorsal, string position, string country)
+    public async Task RegistrarJugadorConTareaAsync(string nombre, string apellido, int edad, int dorsal, string position, string country)
     {
         var existentes = await _repo.GetAllAsync();
         if (existentes.Any(j => j.Name == nombre))
@@ -28,6 +28,7 @@ public class JugadorService : IJugadorService
         {
             Name = nombre,
             LastName = apellido,
+            Age = edad,
             Dorsal = dorsal,
             Position = position,
             Country = country,
@@ -37,13 +38,14 @@ public class JugadorService : IJugadorService
         _repo.Update(jugador);
     }
 
-    public async Task EditarJugador(int id, string nuevoNombre, string nuevoApellido, string nuevaDorsal, string nuevaPosition, string nuevoCountry)
+    public async Task EditarJugador(int id, string nuevoNombre, string nuevoApellido, int nuevaEdad, int nuevaDorsal, string nuevaPosition, string nuevoCountry)
     {
         var jugador = await _repo.GetByIdAsync(id);
         if (jugador == null)
             throw new Exception($"❌ Jugador con ID {id} no encontrado.");
         jugador.Name = nuevoNombre;
         jugador.LastName = nuevoApellido;
+        jugador.Age = nuevaEdad;
         jugador.Dorsal = nuevaDorsal;
         jugador.Position = nuevaPosition;
         jugador.Country = nuevoCountry;

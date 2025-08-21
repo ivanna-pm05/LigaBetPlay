@@ -13,6 +13,7 @@ namespace LigaBetPLay.src.Modules.Jugadores.Application.Interfaces
         void Add(Jugador jugador);
         void Remove(Jugador jugador);
         void Update(Jugador jugador);
+        
         Task SaveAsync();
     }
 }

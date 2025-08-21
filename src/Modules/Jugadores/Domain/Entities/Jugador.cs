@@ -11,9 +11,11 @@ namespace LigaBetPLay.src.Modules.Jugadores.Domain.Entities
         public int Id { get; set; }
         public string? Name { get; set; } = string.Empty;
         public string? LastName { get; set; } = string.Empty;
-        public string? Dorsal { get; set; }
+        public int Age { get; set; }
+        public int Dorsal { get; set; }
         public string? Position { get; set; }
         public string? Country { get; set; }
+        public bool Disponible { get; set; } = true;
         public int? TeamId { get; set; }
         public Team? Team { get; set; }
     }

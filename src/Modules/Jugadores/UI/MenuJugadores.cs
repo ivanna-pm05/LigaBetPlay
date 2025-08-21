@@ -50,12 +50,13 @@ public class MenuJugadores
                     string? nombre = Console.ReadLine();
                     Console.Write("Apellido Jugador: ");
                     string? apellido = Console.ReadLine();
+                    int edad = LeerEntero("Edad Jugador");
                     int dorsal = LeerEntero("Dorsal Jugador: ");
                     Console.Write("Posicion Jugador: ");
                     string? position = Console.ReadLine();
                     Console.Write("Pais Jugador: ");
                     string? country = Console.ReadLine();
-                    await service.RegistrarJugadorConTareaAsync(nombre!, apellido!, dorsal.ToString(), position!, country!);
+                    await service.RegistrarJugadorConTareaAsync(nombre!, apellido!, edad!, dorsal!, position!, country!);
                     Console.Write("✅ Jugador Registrado.");
                     Console.WriteLine("\nPresione una tecla para continuar...");
                     Console.ReadKey();
@@ -68,7 +69,7 @@ public class MenuJugadores
                     int id = LeerEntero("ID del jugador a buscar: ");
                     Jugador? jugador = await service.ObtenerJugadorPorIdAsync(id);
                     if (jugador != null)
-                        Console.WriteLine($"👤 {jugador.Name} - {jugador.LastName} - {jugador.Dorsal} - {jugador.Position} - {jugador.Country}");
+                        Console.WriteLine($"👤 {jugador.Name} - {jugador.LastName} - {jugador.Age} - {jugador.Dorsal} - {jugador.Position} - {jugador.Country}");
                     else
                         Console.WriteLine("❌ Jugador no encontrado.");
                     Console.WriteLine("\nPresione una tecla para continuar...");
@@ -84,12 +85,13 @@ public class MenuJugadores
                     string? nuevoName = Console.ReadLine();
                     Console.Write("Nuevo Apellido: ");
                     string? nuevoLastName = Console.ReadLine();
+                    int nuevaEdad = LeerEntero("Nueva edad: ");
                     int nuevaDorsal = LeerEntero("Nueva Dorsal: ");
                     Console.Write("Nueva Posicion: ");
                     string? nuevaPosition = Console.ReadLine();
                     Console.Write("Nuevo Pais: ");
                     string? nuevoCountry = Console.ReadLine();
-                    await service.EditarJugador(idUp, nuevoName!, nuevoLastName!, nuevaDorsal.ToString(), nuevaPosition!, nuevoCountry!);
+                    await service.EditarJugador(idUp, nuevoName!, nuevoLastName!, nuevaEdad!, nuevaDorsal, nuevaPosition!, nuevoCountry!);
                     Console.WriteLine("✏️ Editado.");
                     Console.WriteLine("\nPresione una tecla para continuar...");
                     Console.ReadKey();
