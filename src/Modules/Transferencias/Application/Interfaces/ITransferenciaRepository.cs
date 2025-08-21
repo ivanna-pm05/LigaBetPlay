@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,4 +12,4 @@ namespace LigaBetPlay.src.Modules.Transferencias.Application.Interfaces
         Task AddAsync(Transferencia transferencia);
         Task SaveAsync();
     }
-}
+} */

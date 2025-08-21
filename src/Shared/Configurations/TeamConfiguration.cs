@@ -46,10 +46,10 @@ namespace LigaBetPlay.src.Shared.Configurations
                 .UsingEntity<Dictionary<string, object>>(
                 "team_torneo", 
                 r => r.HasOne<Torneo>().WithMany().HasForeignKey("TorneoId").OnDelete(DeleteBehavior.Cascade),
-                l => l.HasOne<Team>().WithMany().HasForeignKey("EquipoId").OnDelete(DeleteBehavior.Cascade),
+                l => l.HasOne<Team>().WithMany().HasForeignKey("TeamId").OnDelete(DeleteBehavior.Cascade),
                 je =>
                 {
-                    je.HasKey("TorneoId", "EquipoId");
+                    je.HasKey("TorneoId", "TeamId");
                     je.ToTable("team_torneo");
                 }
                 );

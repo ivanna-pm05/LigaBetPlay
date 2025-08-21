@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,3 +19,4 @@ public class Transferencia
     public bool EsPrestamo { get; set; } // true = préstamo, false = compra
     public DateTime Fecha { get; set; } = DateTime.Now;
 }
+ */

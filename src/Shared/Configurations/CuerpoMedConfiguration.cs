@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LigaBetPlay.src.Shared.Configurations
 {
-    public class CuerpoMedConfiguration
+    public class CuerpoMedConfiguration : IEntityTypeConfiguration<CuerpoMedico>
     {
         public void Configure(EntityTypeBuilder<CuerpoMedico> builder)
         {

@@ -96,11 +96,12 @@ public class MenuTeams
                     string? nombreCT = Console.ReadLine();
                     Console.WriteLine("Ingrese el apellido: ");
                     string? apellidoCT = Console.ReadLine();
+                    int edadCT = LeerEntero("Ingrese la edad:");
                     Console.WriteLine("Ingrese el rol: ");
                     string? role = Console.ReadLine();
                     Console.Write("Ingrese el país de origen del equipo: ");
                     string? countryCT = Console.ReadLine();
-                    await cuerpoTecnicoService.RegistrarCuerpoTecnicoConTareaAsync(nombreCT!, apellidoCT!, role!,countryCT!, equipoIdCT);
+                    await cuerpoTecnicoService.RegistrarCuerpoTecnicoConTareaAsync(nombreCT!, apellidoCT!, edadCT!, role!,countryCT!, equipoIdCT);
                     Console.WriteLine("Cuerpo técnico registrado con éxito ✅.");
                     Console.ReadKey();
                     break;

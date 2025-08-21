@@ -12,23 +12,25 @@ namespace LigaBetPlay.src.Shared.Configurations
     {
         public void Configure(EntityTypeBuilder<CuerpoTecnico> builder)
         {
-            builder.ToTable("cuerpo_tecnico");
+                builder.ToTable("cuerpo_tecnico");
 
-            builder.HasKey(c => c.Id);
+                builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.Name)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                builder.Property(c => c.Name)
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-            builder.Property(c => c.LastName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-            builder.Property(c => c.Role)
-                    .IsRequired()
-                    .HasMaxLength(100);
-            
-            builder.HasOne(ct => ct.Teams)
+                builder.Property(c => c.LastName)
+                        .IsRequired()
+                        .HasMaxLength(100);
+                builder.Property(cm => cm.Edad)
+                        .IsRequired();
+                        
+                builder.Property(c => c.Role)
+                        .IsRequired()
+                        .HasMaxLength(100);
+                
+                builder.HasOne(ct => ct.Teams)
                 .WithMany(e => e.CuerposTecnicos) 
                 .HasForeignKey(cm => cm.TeamId)
                 .OnDelete(DeleteBehavior.NoAction);

@@ -1,4 +1,5 @@
-﻿using LigaBetPlay.src.Modules.Torneos.Application.Repositories;
+﻿using LigaBetPlay.src.Modules.Teams.UI;
+using LigaBetPlay.src.Modules.Torneos.Application.Repositories;
 using LigaBetPlay.src.Modules.Torneos.Application.Services;
 using LigaBetPlay.src.Modules.Torneos.UI;
 using LigaBetPlay.src.Shared.Helpers;
@@ -12,7 +13,7 @@ while (!salir)
 {
     Console.Clear();
     Console.WriteLine("+====================================+");
-    Console.WriteLine("| ⚜️   Administrador de Torneos   ⚜️ |");
+    Console.WriteLine("| ⚜️   Administrador de Torneos   ⚜️   |");
     Console.WriteLine("+====================================+");
     Console.WriteLine("| 1) Crear Torneo                    |");
     Console.WriteLine("| 2) Registro Equipos                |");
@@ -31,6 +32,7 @@ while (!salir)
             await new MenuTorneos(context).RenderMenu();
             break;
         case 2:
+            await new MenuTeams(context).RenderMenu();
             break;
         case 3:
             await new MenuJugadores(context).RenderMenu();

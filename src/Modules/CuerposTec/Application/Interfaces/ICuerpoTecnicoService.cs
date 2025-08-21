@@ -8,6 +8,6 @@ namespace LigaBetPlay.src.Modules.CuerposTec.Application.Interfaces;
 
 public interface ICuerpoTecnicoService
 {
-    Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido, string role, string country, int teamId);
+    Task RegistrarCuerpoTecnicoConTareaAsync(string nombre, string apellido,int edad, string role, string country, int teamId);
     Task<IEnumerable<CuerpoTecnico>> ConsultarCuerpoTecnicosAsync();
 }

@@ -1,0 +1,91 @@
+CREATE DATABASE LigaBetPlay;
+
+USE LigaBetPlay;
+
+CREATE TABLE IF NOT EXISTS torneos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Type VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    FechaInicio DATE NOT NULL,
+    FechaFin DATE NOT NULL
+)ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS teams (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Type VARCHAR(50),
+    Country VARCHAR(50) 
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS team_torneo (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    TorneoId INT NOT NULL,
+    TeamId INT NOT NULL,
+    FOREIGN KEY (TorneoId) REFERENCES torneos(Id),
+    FOREIGN KEY (TeamId) REFERENCES teams(Id)
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS cuerpos_medicos (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Edad INT NOT NULL,
+    Especialidad VARCHAR(100) NOT NULL,
+    TeamId INT NOT NULL,
+    FOREIGN KEY (TeamId) REFERENCES teams(Id)
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS cuerpo_tecnico (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Edad INT NOT NULL,
+    Role VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    TeamId INT NOT NULL,
+    FOREIGN KEY (TeamId) REFERENCES teams(Id)
+) ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS jugadores (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Age INT NOT NULL,
+    Dorsal INT NOT NULL,
+    Position VARCHAR(100) NOT NULL,
+    Country VARCHAR(100) NOT NULL,
+    TeamId INT NULL,
+    FOREIGN KEY (TeamId) REFERENCES teams(Id)
+);
+
+CREATE TABLE Notificaciones (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Mensaje NVARCHAR(500) NOT NULL,
+    Fecha DATETIME NOT NULL DEFAULT GETDATE(),
+    Estado NVARCHAR(50) NOT NULL,
+    EquipoDuenoId INT NOT NULL,
+    EquipoSolicitanteId INT NOT NULL,
+    JugadorId INT NOT NULL,
+    Atendida BIT NOT NULL DEFAULT 0,
+    FOREIGN KEY (EquipoDuenoId) REFERENCES Equipos(Id),
+    FOREIGN KEY (EquipoSolicitanteId) REFERENCES Equipos(Id),
+    FOREIGN KEY (JugadorId) REFERENCES Jugadores(Id)
+);
+CREATE TABLE Transferencias (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    JugadorId INT NOT NULL,
+    EquipoOrigenId INT NOT NULL,
+    EquipoDestinoId INT NOT NULL,
+    Tipo NVARCHAR(50) NOT NULL,  
+    Precio DECIMAL(18,2) NULL,   
+    TiempoPrestamoMeses INT NULL, 
+    Estado NVARCHAR(50) NOT NULL DEFAULT 'Pendiente',
+    FechaSolicitud DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaRespuesta DATETIME NULL,
+    FOREIGN KEY (JugadorId) REFERENCES Jugadores(Id),
+    FOREIGN KEY (EquipoOrigenId) REFERENCES Equipos(Id),
+    FOREIGN KEY (EquipoDestinoId) REFERENCES Equipos(Id)
+);
+
+SELECT * FROM torneos;
